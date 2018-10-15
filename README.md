@@ -24,7 +24,7 @@ Add the dependency in build.gradle (App module)
 
 ```gradle
 dependencies {
-	compile 'com.github.felixsoares:BottomNavygation:1.8.6'
+	implementation 'com.github.felixsoares:BottomNavygation:1.8.6'
 }
 ```
 
@@ -51,7 +51,11 @@ In layout file
 In Activity or Fragment
 
 ```java
+// Find the bottom navigation view
 BottomNav bottomNav = findViewById(R.id.bottomNav);
+
+// ItemNav(contaxt,default_icon,selected_icon, "Label").
+
 bottomNav.addItemNav(new ItemNav(this, R.mipmap.explore, "Explore").addColorAtive(R.color.colorAccent));
 bottomNav.addItemNav(new ItemNav(this, R.mipmap.atividades).addColorAtive(R.color.colorAccent));
 bottomNav.build();
@@ -67,6 +71,7 @@ bottomNav.setTabSelectedListener(listener);
 BottomNav.OnTabSelectedListener listener = new BottomNav.OnTabSelectedListener() {
     @Override
     public void onTabSelected(int position) {
+    // position of item selected is the same as the order it was added.
         Toast.makeText(MainActivity.this, "Click position " + position, Toast.LENGTH_SHORT).show();
     }
 
